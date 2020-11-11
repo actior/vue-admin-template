@@ -3,22 +3,18 @@ export default {
   name: 'MenuItem',
   functional: true,
   props: {
-    title: {
+    icon: {
       type: String,
       default: ''
     },
-    icon: {
+    title: {
       type: String,
       default: ''
     }
   },
   render(h, context) {
-    const { title, icon } = context.props
+    const { icon, title } = context.props
     const vnodes = []
-
-    if (title) {
-      vnodes.push(<span slot='title'>{(title)}</span>)
-    }
 
     if (icon) {
       if (icon.includes('el-icon')) {
@@ -26,6 +22,10 @@ export default {
       } else {
         vnodes.push(<svg-icon icon-class={icon}/>)
       }
+    }
+
+    if (title) {
+      vnodes.push(<span slot='title'>{(title)}</span>)
     }
     return vnodes
   }
